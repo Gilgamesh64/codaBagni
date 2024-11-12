@@ -25,7 +25,6 @@ public class Queue {
         if(queue.contains(name)) return;
         queue.add(name);
         sendStringEvent().trigger("Turno di: " + queue.peek());
-        System.out.println(queue.toString());
     }
 
     public static synchronized void poll(){

@@ -121,7 +121,6 @@ public class BathroomManagerGUI extends javax.swing.JPanel {
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {
         String s = Request.getText();
-        System.out.println(s);
         sendMessage("add " + s);
     }
     private void ReturnedActionPerformed(java.awt.event.ActionEvent evt) {

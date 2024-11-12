@@ -46,7 +46,6 @@ public class ServerThread extends Thread {
 
         Queue.sendStringEvent().addListener(
             message -> {
-                System.out.println(message);
                 write(message);
         });
     }
