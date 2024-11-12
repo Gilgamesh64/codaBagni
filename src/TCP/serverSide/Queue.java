@@ -22,10 +22,10 @@ public class Queue {
     private static ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
 
     public static synchronized void add(String name){
-        System.out.println(queue.toString());
         if(queue.contains(name)) return;
         queue.add(name);
         sendStringEvent().trigger("Turno di: " + queue.peek());
+        System.out.println(queue.toString());
     }
 
     public static synchronized void poll(){

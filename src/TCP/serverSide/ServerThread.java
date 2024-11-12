@@ -46,6 +46,7 @@ public class ServerThread extends Thread {
 
         Queue.sendStringEvent().addListener(
             message -> {
+                System.out.println(message);
                 write(message);
         });
     }
@@ -56,11 +57,11 @@ public class ServerThread extends Thread {
 
             do {
                 text = reader.readLine();
-                if(text.contains("aggiungi")){
+                if(text.contains("add")){
                     String name = text.split(" ")[1];
                     Queue.add(name);
                 } 
-                if(text.equals("tornato")){
+                if(text.equals("back")){
                     Queue.poll();
                 }
             } while (!text.equals("close"));
