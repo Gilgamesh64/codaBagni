@@ -37,7 +37,7 @@ public class Client extends Thread{
             e.printStackTrace(); 
         }
         
-        BathroomManagerGUI.sendStringEvent().addListener(
+        Frame.sendStringEvent().addListener(
             message -> { //event triggered from the outside to send a message
                 if(message.equals("close")){
                     dispose();

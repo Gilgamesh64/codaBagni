@@ -28,6 +28,11 @@ public class Queue {
     }
 
     public static synchronized void poll(){
-        sendStringEvent().trigger("Tornato: " + queue.poll() + " Ora turno di:" + queue.peek());
+        queue.poll();
+        sendStringEvent().trigger("Turno di:" + queue.peek());
+    }
+
+    public static synchronized String peek(){
+        return queue.peek();
     }
 }

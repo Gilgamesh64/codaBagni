@@ -27,6 +27,8 @@ public class ServerThread extends Thread {
     private OutputStream output;
     private PrintWriter writer;
 
+    private String clientName;
+
     public Event<String> stringReceivedEvent() {
         return stringReceived;
     }
@@ -56,11 +58,21 @@ public class ServerThread extends Thread {
 
             do {
                 text = reader.readLine();
+
+                if(text.equals("get")) write(clientName);
+
+                if(text.contains("name")){
+                    clientName = text.split(":")[1];
+                    if(!Database.passwordMap.get(clientName).equals(text.split(":")[2])) {
+                        write("illegal");
+                        close();
+                    }
+                }
                 if(text.contains("add")){
-                    String name = text.split(" ")[1];
+                    String name = text.split(":")[1];
                     Queue.add(name);
                 } 
-                if(text.equals("back")){
+                if(text.contains("returned") && Queue.peek().equals(clientName)){
                     Queue.poll();
                 }
             } while (!text.equals("close"));
