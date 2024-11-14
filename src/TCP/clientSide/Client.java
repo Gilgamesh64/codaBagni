@@ -37,7 +37,7 @@ public class Client extends Thread{
             e.printStackTrace(); 
         }
         
-        Frame.sendStringEvent().addListener(
+        GUI.sendStringEvent().addListener(
             message -> { //event triggered from the outside to send a message
                 if(message.equals("close")){
                     dispose();
