@@ -29,10 +29,11 @@ public class Queue {
 
     public static synchronized void poll(){
         queue.poll();
-        sendStringEvent().trigger("Turno di:" + queue.peek());
+        if(queue.isEmpty()) sendStringEvent().trigger("Coda vuota");
+        else sendStringEvent().trigger("Turno di:" + queue.peek());
     }
 
     public static synchronized String peek(){
-        return queue.peek();
+        return queue.isEmpty() ? "Coda vuota" : queue.peek();
     }
 }

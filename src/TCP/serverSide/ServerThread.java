@@ -59,7 +59,10 @@ public class ServerThread extends Thread {
             do {
                 text = reader.readLine();
 
-                if(text.equals("get")) write(clientName);
+                if(text.equals("get")){
+                    if(Queue.peek().equals("Coda vuota")) write(Queue.peek());
+                    else write("Turno di " + Queue.peek());
+                } 
 
                 if(text.contains("name")){
                     clientName = text.split(":")[1];

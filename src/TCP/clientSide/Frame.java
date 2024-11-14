@@ -158,8 +158,6 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        currentBathroomState.setText("null");
-
         javax.swing.GroupLayout bathroomManagerLayout = new javax.swing.GroupLayout(bathroomManager);
         bathroomManager.setLayout(bathroomManagerLayout);
         bathroomManagerLayout.setHorizontalGroup(
@@ -268,6 +266,7 @@ public class Frame extends javax.swing.JFrame {
 
         client.start();
         sendMessage("name:" + nameTextbox.getText() + ":" + passwordTextbox.getText());
+        sendMessage("get");
     }
 
     /**
