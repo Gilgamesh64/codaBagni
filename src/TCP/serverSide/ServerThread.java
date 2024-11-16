@@ -60,8 +60,8 @@ public class ServerThread extends Thread {
                 text = reader.readLine();
 
                 if(text.equals("get")){
-                    if(Queue.peek().equals("Coda vuota")) write(Queue.peek());
-                    else write("Turno di " + Queue.peek());
+                    if(Queue.peek().equals("Coda vuota")) write("Coda Vuota");
+                    else write(Queue.print());
                 } 
 
                 if(text.contains("name")){

@@ -24,16 +24,20 @@ public class Queue {
     public static synchronized void add(String name){
         if(queue.contains(name)) return;
         queue.add(name);
-        sendStringEvent().trigger("Turno di: " + queue.peek());
+        sendStringEvent().trigger(Queue.print());
     }
 
     public static synchronized void poll(){
         queue.poll();
         if(queue.isEmpty()) sendStringEvent().trigger("Coda vuota");
-        else sendStringEvent().trigger("Turno di:" + queue.peek());
+        else sendStringEvent().trigger(Queue.print());
     }
 
     public static synchronized String peek(){
-        return queue.isEmpty() ? "Coda vuota" : queue.peek();
+        return queue.isEmpty() ? "Coda vuota" : Queue.print();
+    }
+
+    public static String print() {
+        return queue.toString();
     }
 }
