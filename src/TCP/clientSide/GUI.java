@@ -1,5 +1,8 @@
 package TCP.clientSide;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import events.Event;
@@ -36,7 +39,6 @@ public class GUI extends JFrame {
     public static Event<String> sendStringEvent() {
         return sendString;
     }
-
 
     public GUI() {
         initComponents();
@@ -265,9 +267,15 @@ public class GUI extends JFrame {
 
         client.stringReceivedEvent().addListener(
             stringReceivedFromServer -> {
-                currentOutLabel.setText(stringReceivedFromServer);
-                list.setListData(new String[]{"ciao", "gigi"});
-                currentOutLabel.setText(stringReceivedFromServer);
+                if(!stringReceivedFromServer.equals("Coda Vuota")){
+                    String[] temp = stringReceivedFromServer.split(",");
+                    list.setListData(temp);
+                    currentOutLabel.setText("Turno di: " + temp[0]);
+                }
+                else{
+                    currentOutLabel.setText(stringReceivedFromServer);
+                    list.setListData(new String[]{""});
+                } 
         });
 
         client.start();

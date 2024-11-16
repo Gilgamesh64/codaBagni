@@ -60,8 +60,7 @@ public class ServerThread extends Thread {
                 text = reader.readLine();
 
                 if(text.equals("get")){
-                    if(Queue.peek().equals("Coda vuota")) write("Coda Vuota");
-                    else write(Queue.print());
+                    write(Queue.print());
                 } 
 
                 if(text.contains("name")){
@@ -75,8 +74,10 @@ public class ServerThread extends Thread {
                     String name = text.split(":")[1];
                     Queue.add(name);
                 } 
-                if(text.contains("returned") && Queue.peek().equals(clientName)){
-                    Queue.poll();
+                if(text.contains("returned")){
+                    if(Queue.peek().equals(clientName)){
+                        Queue.poll();
+                    }
                 }
             } while (!text.equals("close"));
 

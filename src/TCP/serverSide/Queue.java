@@ -29,15 +29,19 @@ public class Queue {
 
     public static synchronized void poll(){
         queue.poll();
-        if(queue.isEmpty()) sendStringEvent().trigger("Coda vuota");
+        if(queue.isEmpty()) sendStringEvent().trigger("Coda Vuota");
         else sendStringEvent().trigger(Queue.print());
     }
 
-    public static synchronized String peek(){
-        return queue.isEmpty() ? "Coda vuota" : Queue.print();
+    public static synchronized String print(){
+        return queue.isEmpty() ? "Coda Vuota" : queue.toString().replaceAll("\\[", "").replaceAll("\\]", "");
     }
 
-    public static String print() {
-        return queue.toString();
+    public static synchronized int getSize(){
+        return queue.size();
+    }
+
+    public static synchronized String peek(){
+        return queue.isEmpty() ? "Coda Vuota" : queue.peek();
     }
 }
