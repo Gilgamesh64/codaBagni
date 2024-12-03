@@ -65,9 +65,15 @@ public class ServerThread extends Thread {
 
                 if(text.contains("name")){
                     clientName = text.split(":")[1];
+                    if(!Database.passwordMap.containsKey(clientName)){
+                        write("illegal");
+                        close();
+                        return;
+                    }
                     if(!Database.passwordMap.get(clientName).equals(text.split(":")[2])) {
                         write("illegal");
                         close();
+                        return;
                     }
                 }
                 if(text.contains("add")){

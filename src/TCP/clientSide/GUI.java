@@ -267,7 +267,7 @@ public class GUI extends JFrame {
 
         client.stringReceivedEvent().addListener(
             stringReceivedFromServer -> {
-                if(!stringReceivedFromServer.equals("Coda Vuota")){
+                if(!stringReceivedFromServer.equals("Coda Vuota") && !stringReceivedFromServer.equals("illegal")){
                     String[] temp = stringReceivedFromServer.split(",");
                     list.setListData(temp);
                     currentOutLabel.setText("Turno di: " + temp[0]);
