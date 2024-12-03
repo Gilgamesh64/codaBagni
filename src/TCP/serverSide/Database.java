@@ -10,12 +10,16 @@ public class Database {
         try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
             String s = br.readLine();
             while(s != null){
-                String name = s.split(":")[0];
-                String pw = s.split(":")[1];
-                passwordMap.put(name, pw);
+                if(s.matches("^\\S+:\\S+")){
+                    String name = s.split(":")[0];
+                    String pw = s.split(":")[1];
+                    passwordMap.put(name, pw);
+                }
                 s = br.readLine();
             }
 
         } catch (Exception e) {e.printStackTrace();}
+
+        System.out.println(passwordMap.toString());
     }
 }
